@@ -21,8 +21,8 @@ We have the ambitious goal of rebuilding Amazon.com’s shopping experience as a
 - [ ] Implement a simple version of the **authentication service** using PHP 7+ and a framework
       of your choice and **deploy it** to AWS, Google Cloud or Azure. _(8)_
 - [ ] **Share the URL** for us to test. _(9)_
-- [*] Please **use Git** as version control. Create a **new project** in your own GitHub
-  account and push the code to it. _(10)_
+- [x] Please **use Git** as version control. Create a **new project** in your own GitHub
+      account and push the code to it. _(10)_
 - [ ] Pay special attention to the **“README.md”** document, we would like you to keep
       it _as informative as possible_. _(11)_
 - [ ] Please also **push all the documentation and diagrams** to GitHub. _(12)_
@@ -41,14 +41,14 @@ We have the ambitious goal of rebuilding Amazon.com’s shopping experience as a
 - [ ] Develop Tech Stack based on functional requirements
   - [ ] Tools
     - [ ] Service Development
-      - [*] Programming Language
+      - [x] Programming Language
       - [ ] Service Framework
       - [ ] Test Platform
         - [ ] Test Data
     - [ ] Database Choice
     - [ ] Messaging
   - [ ] Hosting Platform
-    - [*] Platform
+    - [x] Platform
     - [ ] Compute
     - [ ] Storage (DB)
     - [ ] Messaging
@@ -64,8 +64,8 @@ We have the ambitious goal of rebuilding Amazon.com’s shopping experience as a
   - [ ] DELIVER _(4)_ ARCHITECTURE DIAGRAM
   - [ ] DELIVER _(5)_ TECHNICAL SPECIFICATIONS
   <!-- - [ ] DELIVER *(6)* TECHNICAL SPECIFICATIONS -->
-  - [*] DELIVER _(10)_ GITHUB REPO
-  - [*] DELIVER _(11)_ README.md
+  - [x] DELIVER _(10)_ GITHUB REPO
+  - [x] DELIVER _(11)_ README.md
   - [ ] DELIVER _(12)_ DELIVER DOCS TO GITHUB
 
 * [ ] Identify potential refactorings/optimizations (ongoing)
