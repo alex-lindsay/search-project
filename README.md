@@ -34,11 +34,13 @@ We have the ambitious goal of rebuilding Amazon.com’s shopping experience as a
 - [ ] Use **Docker and/or Kubernetes** _(15)_
 - [ ] Use **Terraform or CloudFormation** _(16)_
 
-## Project Plan
+## Project Plan (Preliminary Deliverables _1_ & _2_)
 
 ### Release 1 - Planning (ETA ?Saturday EOD)
 
-- [ ] Develop Tech Stack based on functional requirements
+- _Underlined Items_ in releases are te be reviewed for roadmap planning and scheduling
+
+* [ ] Develop Tech Stack based on functional requirements
   - [ ] Tools
     - [ ] Service Development
       - [x] Programming Language
@@ -49,8 +51,8 @@ We have the ambitious goal of rebuilding Amazon.com’s shopping experience as a
     - [ ] Messaging
   - [ ] Hosting Platform
     - [x] Platform
-    - [ ] Compute
-    - [ ] Storage (DB)
+    - [x] Compute
+    - [x] Storage (DB)
     - [ ] Messaging
     - [ ] Service Coupling
     - [ ] Authentication
@@ -68,64 +70,124 @@ We have the ambitious goal of rebuilding Amazon.com’s shopping experience as a
   - [x] DELIVER _(11)_ README.md
   - [ ] DELIVER _(12)_ DELIVER DOCS TO GITHUB
 
-* [ ] Identify potential refactorings/optimizations (ongoing)
+- [ ] Identify potential refactorings/optimizations (ongoing)
 
-### Release 2 - Infrastucture (ETA ?Saturday EOD)
+### Release 2 - Infrastucture (ETA ?Sunday EOD)
 
 - [ ] Set up service hosting environment
-  - [ ] Set up API Server
-    - [ ] Install PHP
+  - [x] Set up API Server
+    - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-lamp-amazon-linux-2.html
+    - [x] Install PHP
     - [ ] Install Lumen
-  - [ ] Set up DB Server
+      - [ ] Install Lumen Prerequisites
+        - [x] Install Composer
+        - [ ] Install PDO
+        - [ ] Install OpenSSL
+        - [ ] Install MBString
+  - [x] Set up DB Server
   - [ ] Set up Auth Service
   - [ ] Set up Messaging Service
 - [ ] Install PHP Cognito Support (?)
-- [ ] Install PHP DB Support (?)
+- [x] Install PHP DB Support (?)
 - [ ] Install PHP Messaging Support (?)
 
 * [ ] Identify potential refactorings/optimizations (ongoing)
 
-### Unscheduled Tasks
+### Release 3 - Person Service
 
-- [ ] Generate Sample User Data
+- [ ] Create boilerplate Person Service
+- [ ] Deploy boilerplace Person Service
+- [ ] Generate Sample User Data (?)
+- [ ] Upload Sample User Data (?)
+- [ ] Create New Person
+  - [ ] Tie in to metrics database
+  - [ ] _Password Validation_
+- [ ] Log in as Existing Person
+  - [ ] Tie in to metrics database
+  - [ ] _Account Locking_
+
+### Release 4 - Product Service (Search)
+
 - [ ] Generate Sample Product Data
-- [ ] Upload Sample User Data
 - [ ] Upload Sample Product Data
-- [ ] Create boilerplate Login Service
-- [ ] Deploy boilerplace Login Service
-- [ ] Create boilerplate Search Service
-- [ ] Deploy boilerplace Search Service
+- [ ] Create boilerplate Product Service
+- [ ] Deploy boilerplace Product Service
+- [ ] Search for Products (basic text)
+- [ ] Track Products Shown by Search and Choices
+
+### Release 5 - Cart Service
+
 - [ ] Create boilerplate Cart Service
 - [ ] Deploy boilerplace Cart Service
-- [ ] Create boilerplate Checkout Service
-- [ ] Deploy boilerplace Checkout Service
-- [ ] Create boilerplate Payment Service
-- [ ] Deploy boilerplace Payment Service
-- [ ] Create boilerplate Fulfillment Service
-- [ ] Deploy boilerplace Fulfillment Service
+- [ ] Add to Cart
+  - [ ] Create a Cart if none exists for Person
+- [ ] List Cart
+- [ ] Remove from Cart
+- [ ] _Add Cart Abandonment Processing_
+
+### Release 5 - Order Service
+
+- [ ] Create boilerplate Order Service
+- [ ] Deploy boilerplace Order Service
+- [ ] Checkout Cart - new Order
+- [ ] _Integrate with Payment Processor to reduce PII_
+- [ ] _Get Payment Info_
+- [ ] Get Billing Info
+- [ ] Get Delivery Info
+- [ ] Get Order Details
+- [ ] Confirm Order
+- [ ] Get Order Status
+- [ ] Search - Given a Product, get Products also Purchased
+  - [ ] Generate Test Data - Orders
+
+### Unscheduled Tasks
+
+- [ ] _Create boilerplate Payment Service_
+- [ ] _Deploy boilerplace Payment Service_
+- [ ] _Create boilerplate Fulfillment Service_
+- [ ] _Deploy boilerplace Fulfillment Service_
 - [ ] Create boilerplate Metrics Service
 - [ ] Deploy boilerplace Metrics Service
-- [ ] Add Business Logic
+- [ ] _Account Recovery Process_
 
 ## Tech Stack
 
 - Amazon AWS
+  - t2.small (upgraded due to memory issues for Lumen)
 - LAMP running on Amazon Linux 2
-  - Most familiar hosting environment for me to start with.
+  - **Most familiar hosting environment for me to start with.**
+  - PHP 7.2
+  - MariaDB 3.10
 - Lumen application framework
-  - Lightweight
+  - Composer
+  - OpenSSL PHP Extension
+  - PDO PHP Extension
+  - Mbstring PHP Extension
 - Amazon Cognito - Authentication
   - Don't recreate the wheel
 
 ## KPIs
 
 - Cost
+  - Amazon Console
 - Response Time
+  - CloudWatch
 - Conversion
+  - Metrics Database Analytics
 - Code Coverage
+  - PHPUnit Reporting
 - Traffic
+  - Dynatrace?
+- User Engagement with Suggested Items
+  - Metrics Database Analytics
+- Uptime
+  - CloudWatch
 
-## Compromises
+## Compromises/TBD/Enhancements
 
 - Very little attention has been given to construction of hosting environment other than to get something FUNCTIONALLY operational - this is an area where I'd want to work with Operations/Platform to get the optimal architecture, and scaling plan in place.
 - Cheating a metrics service. This could be any of a number of better solutions for tracking time based data.
+- Add Service Discovery
+- Dynatrace or Datadog
+- Alerting/Response Management
+- Appropriate service circuit breakers
