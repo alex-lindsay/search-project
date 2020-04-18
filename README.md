@@ -95,6 +95,7 @@ We have the ambitious goal of rebuilding Amazon.com’s shopping experience as a
 
 ### Release 3 - Person Service
 
+- [*] Create UI Harness React app
 - [ ] Create boilerplate Person Service
 - [ ] Deploy boilerplace Person Service
 - [ ] Generate Sample User Data (?)
