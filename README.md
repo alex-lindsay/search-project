@@ -198,3 +198,4 @@ We have the ambitious goal of rebuilding Amazon.com’s shopping experience as a
 - Multiple shipping recipients
 - Coupons... LOTS of ecom stuff could be added
 - Review and refine DB (indexing, required fields, lengths)
+- Product Images/Videos

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { LinkContainer } from "react-router-bootstrap";
 import { Navbar, Nav, NavItem } from "react-bootstrap";
 import Routes from "./Routes";
 
@@ -17,8 +18,12 @@ function App() {
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav pullRight>
-            <NavItem href="/reactui/signup">Signup</NavItem>
-            <NavItem href="/reactui/login">Login</NavItem>
+            <LinkContainer to="/reactui/signup">
+              <NavItem>Signup</NavItem>
+            </LinkContainer>
+            <LinkContainer to="/reactui/login">
+              <NavItem>Login</NavItem>
+            </LinkContainer>{" "}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
