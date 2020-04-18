@@ -47,7 +47,7 @@ We have the ambitious goal of rebuilding Amazon.com’s shopping experience as a
       - [ ] Service Framework
       - [ ] Test Platform
         - [ ] Test Data
-    - [ ] Database Choice
+    - [x] Database Choice
     - [ ] Messaging
   - [ ] Hosting Platform
     - [x] Platform
@@ -55,8 +55,8 @@ We have the ambitious goal of rebuilding Amazon.com’s shopping experience as a
     - [x] Storage (DB)
     - [ ] Messaging
     - [ ] Service Coupling
-    - [ ] Authentication
-    - [ ] Document High-Level Architecture
+    - [x] Authentication
+    - [x] Document High-Level Architecture
   - [ ] Define and Document KPIs
   - [ ] Define Services and APIs (Preliminary)
   - [ ] Define Data Model (Preliminary)
@@ -72,7 +72,7 @@ We have the ambitious goal of rebuilding Amazon.com’s shopping experience as a
 
 - [ ] Identify potential refactorings/optimizations (ongoing)
 
-### Release 2 - Infrastucture (ETA ?Sunday EOD)
+### Release 2 - Infrastructure (ETA ?Sunday EOD)
 
 - [ ] Set up service hosting environment
   - [x] Set up API Server
@@ -85,7 +85,7 @@ We have the ambitious goal of rebuilding Amazon.com’s shopping experience as a
         - [x] Install OpenSSL
         - [x] Install MBString
   - [x] Set up DB Server
-  - [ ] Set up Auth Service
+  - [x] Set up Auth Service
   - [ ] Set up Messaging Service
 - [ ] Install PHP Cognito Support (?)
 - [x] Install PHP DB Support (?)
@@ -164,6 +164,7 @@ We have the ambitious goal of rebuilding Amazon.com’s shopping experience as a
   - PDO PHP Extension
   - Mbstring PHP Extension
 - Amazon Cognito - Authentication
+
   - Don't recreate the wheel
 
 ## KPIs
