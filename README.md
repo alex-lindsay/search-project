@@ -164,8 +164,9 @@ We have the ambitious goal of rebuilding Amazon.com’s shopping experience as a
   - PDO PHP Extension
   - Mbstring PHP Extension
 - Amazon Cognito - Authentication
-
   - Don't recreate the wheel
+- Test Data Generation
+  - https://mockaroo.com/
 
 ## KPIs
 
