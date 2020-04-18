@@ -81,9 +81,9 @@ We have the ambitious goal of rebuilding Amazon.com’s shopping experience as a
     - [ ] Install Lumen
       - [ ] Install Lumen Prerequisites
         - [x] Install Composer
-        - [ ] Install PDO
-        - [ ] Install OpenSSL
-        - [ ] Install MBString
+        - [x] Install PDO
+        - [x] Install OpenSSL
+        - [x] Install MBString
   - [x] Set up DB Server
   - [ ] Set up Auth Service
   - [ ] Set up Messaging Service
@@ -191,3 +191,7 @@ We have the ambitious goal of rebuilding Amazon.com’s shopping experience as a
 - Dynatrace or Datadog
 - Alerting/Response Management
 - Appropriate service circuit breakers
+- Multiple consignments
+- Multiple shipping recipients
+- Coupons... LOTS of ecom stuff could be added
+- Review and refine DB (indexing, required fields, lengths)
