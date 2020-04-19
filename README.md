@@ -46,7 +46,7 @@ We have the ambitious goal of rebuilding Amazon.com’s shopping experience as a
       - [x] Programming Language
       - [ ] Service Framework
       - [ ] Test Platform
-        - [ ] Test Data
+        - [x] Test Data
     - [x] Database Choice
     - [ ] Messaging
   - [ ] Hosting Platform
@@ -59,7 +59,7 @@ We have the ambitious goal of rebuilding Amazon.com’s shopping experience as a
     - [x] Document High-Level Architecture
   - [ ] Define and Document KPIs
   - [ ] Define Services and APIs (Preliminary)
-  - [ ] Define Data Model (Preliminary)
+  - [x] Define Data Model (Preliminary)
   - [ ] DELIVER _(1)_ TECHNICAL ROADMAP
   - [ ] DELIVER _(2)_ RELEASE PLAN
   - [ ] DELIVER _(3)_ KPIS
@@ -78,8 +78,8 @@ We have the ambitious goal of rebuilding Amazon.com’s shopping experience as a
   - [x] Set up API Server
     - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-lamp-amazon-linux-2.html
     - [x] Install PHP
-    - [ ] Install Lumen
-      - [ ] Install Lumen Prerequisites
+    - [x] Install Lumen
+      - [x] Install Lumen Prerequisites
         - [x] Install Composer
         - [x] Install PDO
         - [x] Install OpenSSL
@@ -147,8 +147,8 @@ We have the ambitious goal of rebuilding Amazon.com’s shopping experience as a
 - [ ] _Deploy boilerplace Payment Service_
 - [ ] _Create boilerplate Fulfillment Service_
 - [ ] _Deploy boilerplace Fulfillment Service_
-- [ ] Create boilerplate Metrics Service
-- [ ] Deploy boilerplace Metrics Service
+- [ ] _Create boilerplate Metrics Service_
+- [ ] _Deploy boilerplace Metrics Service_
 - [ ] _Account Recovery Process_
 
 ## Tech Stack
@@ -199,3 +199,4 @@ We have the ambitious goal of rebuilding Amazon.com’s shopping experience as a
 - Coupons... LOTS of ecom stuff could be added
 - Review and refine DB (indexing, required fields, lengths)
 - Product Images/Videos
+- Caching
