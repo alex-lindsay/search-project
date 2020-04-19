@@ -1,0 +1,108 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Product Related APIs",
+        "contact": {
+            "name": "Support Team",
+            "email": "work@alex-lindsay.com"
+        },
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/products": {
+            "get": {
+                "tags": [
+                    "products"
+                ],
+                "operationId": "/api/products",
+                "responses": {
+                    "200": {
+                        "description": "Returns all products",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Product"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Product": {
+                "title": "Product model",
+                "description": "Product model",
+                "required": [
+                    "name",
+                    "short_name",
+                    "description",
+                    "vendor",
+                    "price"
+                ],
+                "properties": {
+                    "id": {
+                        "title": "Product ID",
+                        "description": "Product ID.",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "title": "Product Name",
+                        "description": "Full descriptive name of the product.",
+                        "type": "string"
+                    },
+                    "short_name": {
+                        "title": "Product Nickname",
+                        "description": "Familiar name of the product.",
+                        "type": "string"
+                    },
+                    "description": {
+                        "title": "Product Description",
+                        "description": "Description of the product.",
+                        "type": "string"
+                    },
+                    "vendor": {
+                        "title": "Product Vendor ID",
+                        "description": "ID of the vendor of the product.",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "price": {
+                        "title": "Product Price",
+                        "description": "Retail price of the product.",
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "sale_price": {
+                        "title": "Product Sale Price",
+                        "description": "Sale price of the product.",
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "updated_at": {
+                        "title": "Product Updated At",
+                        "description": "Time when the product was last updated.",
+                        "type": "string",
+                        "format": "datetime"
+                    },
+                    "created_at": {
+                        "title": "Product Created At",
+                        "description": "Time when the product was created.",
+                        "type": "string",
+                        "format": "datetime"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Product"
+                }
+            }
+        }
+    }
+}

@@ -200,3 +200,4 @@ We have the ambitious goal of rebuilding Amazon.com’s shopping experience as a
 - Review and refine DB (indexing, required fields, lengths)
 - Product Images/Videos
 - Caching
+- provide JSONAPI endpoints
