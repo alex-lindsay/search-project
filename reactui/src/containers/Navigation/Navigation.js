@@ -30,6 +30,9 @@ const Navigation = (props) => {
             <NavItem onClick={handleLogout}>Logout</NavItem>
           ) : (
             <>
+              <LinkContainer to="/reactui/products">
+                <NavItem>Products</NavItem>
+              </LinkContainer>
               <LinkContainer to="/reactui/signup">
                 <NavItem>Signup</NavItem>
               </LinkContainer>
