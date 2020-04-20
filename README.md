@@ -201,3 +201,4 @@ We have the ambitious goal of rebuilding Amazon.com’s shopping experience as a
 - Product Images/Videos
 - Caching
 - provide JSONAPI endpoints
+- Better Search Engine tooling ()
