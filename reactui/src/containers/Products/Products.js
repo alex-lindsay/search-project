@@ -4,6 +4,7 @@ import axios from "axios";
 import ProductRow from "./ProductRow";
 
 import "./Products.css";
+import ProductSearch from "./ProductSearch";
 
 const Products = (props) => {
   const [products, setProducts] = useState();
@@ -36,19 +37,22 @@ const Products = (props) => {
   );
 
   return (
-    <table className="table table-striped table-hover products">
-      <thead className="thead-light">
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Price</th>
-          <th>Sale Price</th>
-          <th>Status</th>
-          <th>&nbsp;</th>
-        </tr>
-      </thead>
-      <tbody>{productRows}</tbody>
-    </table>
+    <>
+      <ProductSearch />
+      <table className="table table-striped table-hover products">
+        <thead className="thead-light">
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Sale Price</th>
+            <th>Status</th>
+            <th>&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody>{productRows}</tbody>
+      </table>
+    </>
   );
 };
 
