@@ -39,6 +39,7 @@ const Products = (props) => {
     <table className="table table-striped table-hover products">
       <thead className="thead-light">
         <tr>
+          <th>ID</th>
           <th>Name</th>
           <th>Price</th>
           <th>Sale Price</th>

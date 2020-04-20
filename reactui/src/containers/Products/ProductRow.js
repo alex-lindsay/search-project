@@ -15,6 +15,7 @@ const rowClass = (status) => {
 const ProductRow = (props) => {
   return (
     <tr className={rowClass(props.product.status)}>
+      <td>{props.product.id}</td>
       <td>{props.product.name}</td>
       <td>{props.product.price}</td>
       <td>{props.product.sale_price}</td>
