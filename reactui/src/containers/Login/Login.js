@@ -23,7 +23,7 @@ export default function Login() {
     try {
       await Auth.signIn(email, password);
       userHasAuthenticated(true);
-      history.push("/reactui/");
+      history.push("/reactui/products");
     } catch (e) {
       alert(e.message);
     }

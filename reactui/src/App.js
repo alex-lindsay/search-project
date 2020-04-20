@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 import { AppContext } from "./libs/contextLib";
 import { Auth } from "aws-amplify";
 
@@ -11,6 +12,7 @@ import "./App.css";
 function App() {
   const [isAuthenticated, userHasAuthenticated] = useState(false);
   const [isAuthenticating, setIsAuthenticating] = useState(true);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     onLoad();
@@ -37,11 +39,21 @@ function App() {
         isAuthenticated={isAuthenticated}
         userHasAuthenticated={userHasAuthenticated}
       />
-      <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
+      <AppContext.Provider
+        value={{ isAuthenticated, userHasAuthenticated, products, setProducts }}
+      >
         <Routes />
       </AppContext.Provider>
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {};
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

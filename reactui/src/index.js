@@ -1,13 +1,27 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { createStore, applyMiddleware, compose } from "redux";
+import { Provider } from "react-redux";
+import thunkMiddleware from "redux-thunk";
+import { createLogger } from "redux-logger";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Amplify } from "aws-amplify";
 import config from "./config";
 
 import App from "./App";
+import appReducer from "./store/reducers";
 import * as serviceWorker from "./serviceWorker";
 
 import "./index.css";
+
+const loggerMiddleware = createLogger({});
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(
+  appReducer,
+  composeEnhancers(applyMiddleware(thunkMiddleware, loggerMiddleware))
+);
 
 Amplify.configure({
   Auth: {
@@ -33,9 +47,11 @@ Amplify.configure({
   // },
 });
 ReactDOM.render(
-  <Router basename="/">
-    <App />
-  </Router>,
+  <Provider store={store}>
+    <Router basename="/">
+      <App />
+    </Router>
+  </Provider>,
   document.getElementById("root")
 );
 // If you want your app to work offline and load faster, you can change
