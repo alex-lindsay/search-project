@@ -9,12 +9,12 @@
         "version": "1.0"
     },
     "paths": {
-        "/api/products": {
+        "/products": {
             "get": {
                 "tags": [
                     "products"
                 ],
-                "operationId": "/api/products",
+                "operationId": "/products",
                 "responses": {
                     "200": {
                         "description": "Returns all products",

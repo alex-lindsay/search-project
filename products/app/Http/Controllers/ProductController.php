@@ -9,8 +9,8 @@ class ProductController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/products",
-     *     operationId="/api/products",
+     *     path="/products",
+     *     operationId="/products",
      *     tags={"products"},
      *     @OA\Response(
      *         response="200",
