@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import Home from "./containers/Home/Home";
 import Login from "./containers/Login/Login";
@@ -6,6 +6,8 @@ import Products from "./containers/Products/Products";
 import NotFound from "./containers/NotFound/NotFound";
 
 export default function Routes() {
+  const [products] = useState();
+
   return (
     <Switch>
       <Route exact path="/reactui/">
@@ -15,7 +17,7 @@ export default function Routes() {
         <Login />
       </Route>
       <Route exact path="/reactui/products">
-        <Products />
+        <Products products={products} />
       </Route>
       <Route>
         <NotFound />

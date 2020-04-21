@@ -1,8 +1,9 @@
 import { cloneDeep } from "lodash";
-import { SET_PRODUCTS } from "./actions";
+import { SET_PRODUCTS, SET_ALL_PRODUCTS, RESET_PRODUCTS } from "./actions";
 
 const initialState = {
   products: [],
+  allProducts: [],
 };
 
 function appReducer(oldState = initialState, action) {
@@ -10,6 +11,12 @@ function appReducer(oldState = initialState, action) {
   switch (action.type) {
     case SET_PRODUCTS:
       state.products = action.products;
+      break;
+    case SET_ALL_PRODUCTS:
+      state.allProducts = action.products;
+      break;
+    case RESET_PRODUCTS:
+      state.products = oldState.allProducts;
       break;
     default:
       return state;

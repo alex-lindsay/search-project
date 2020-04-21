@@ -1,4 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+
+import { setProducts, setAllProducts } from "../../store/actions";
 import axios from "axios";
 
 import ProductRow from "./ProductRow";
@@ -7,8 +10,6 @@ import "./Products.css";
 import ProductSearch from "./ProductSearch";
 
 const Products = (props) => {
-  const [products, setProducts] = useState();
-
   useEffect(() => {
     async function fetchProducts() {
       try {
@@ -16,8 +17,9 @@ const Products = (props) => {
         const result = await axios.get(
           `${process.env.REACT_APP_API_URL_PRODUCTS}/products`
         );
-        console.log("after axios", result.data);
-        setProducts(result.data.data);
+        console.log("after products axios", result.data);
+        props.dispatchSetProducts(result.data.data);
+        props.dispatchSetAllProducts(result.data.data);
       } catch (error) {
         console.warn("TODO REPLACE THIS WITH AN ERROR DISPATCH");
         console.error("Error getting products:", error);
@@ -26,8 +28,10 @@ const Products = (props) => {
     fetchProducts();
   }, []);
 
-  const productRows = products ? (
-    products.map((product) => <ProductRow key={product.id} product={product} />)
+  const productRows = props.products ? (
+    props.products.map((product) => (
+      <ProductRow key={product.id} product={product} />
+    ))
   ) : (
     <tr>
       <td colSpan="5" className="error">
@@ -56,4 +60,19 @@ const Products = (props) => {
   );
 };
 
-export default Products;
+const mapStateToProps = (state) => {
+  return {
+    products: state.products,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    dispatchSetProducts: (products) => dispatch(setProducts(products)),
+    dispatchSetAllProducts: (products) => dispatch(setAllProducts(products)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Products);
+
+// export default Products;
