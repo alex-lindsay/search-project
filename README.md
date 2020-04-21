@@ -96,25 +96,26 @@ We have the ambitious goal of rebuilding Amazon.com’s shopping experience as a
 ### Release 3 - Person Service
 
 - [*] Create UI Harness React app
-- [ ] Create boilerplate Person Service
-- [ ] Deploy boilerplace Person Service
-- [ ] Generate Sample User Data (?)
-- [ ] Upload Sample User Data (?)
-- [ ] Create New Person
-  - [ ] Tie in to metrics database
+- [*] Create boilerplate Person Service
+- [*] Deploy boilerplace Person Service
+- [*] Generate Sample User Data (?)
+- [*] Upload Sample User Data (?)
+- [*] Create New Person
+  - [ ] _Tie in to metrics database_
   - [ ] _Password Validation_
-- [ ] Log in as Existing Person
-  - [ ] Tie in to metrics database
+- [*] Log in as Existing Person
+  - [ ] _Tie in to metrics database_
   - [ ] _Account Locking_
 
 ### Release 4 - Product Service (Search)
 
-- [ ] Generate Sample Product Data
-- [ ] Upload Sample Product Data
-- [ ] Create boilerplate Product Service
-- [ ] Deploy boilerplace Product Service
-- [ ] Search for Products (basic text)
-- [ ] Track Products Shown by Search and Choices
+- [*] Generate Sample Product Data
+- [*] Upload Sample Product Data
+- [*] Create boilerplate Product Service
+- [*] Deploy boilerplace Product Service
+- [*] Search for Products (basic text)
+- [ ] _Track Products Shown by Search and Choices_
+- [*] Use CloudSearch for better search process
 
 ### Release 5 - Cart Service
 
