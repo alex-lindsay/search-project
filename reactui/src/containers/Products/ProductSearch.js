@@ -27,12 +27,12 @@ const ProductSearch = (props) => {
           props.dispatchSetProducts(result.data.data);
         };
         fetchData();
-      }, 2000);
+      }, 500);
     } else {
       searchTimer = setTimeout(() => {
         console.log(null);
         props.dispatchResetProducts();
-      }, 2000);
+      }, 500);
     }
   };
 
