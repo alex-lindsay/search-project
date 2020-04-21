@@ -25,6 +25,10 @@ class SearchController extends Controller
      */
     public function searchProducts($key)
     {
+        $product_client = new Client([
+            'base_uri' => 'http://localhost:8000'
+        ]);
+
         $client = new Client([
             'base_uri' => 'http://search-prod-srch-proj-srch-wi67dvqvtekxusxijxaaslg3uy.us-west-2.cloudsearch.amazonaws.com'
         ]);
@@ -36,11 +40,27 @@ class SearchController extends Controller
                 'return'=>'id,name'
             ]
         ]);
-        $data = $response->getBody()->getContents();
-        // var_dump($data);
+        $data = json_decode($response->getBody()->getContents());
+        // var_dump($data->hits->hit[0]);
+
+        $products = [];
+        // for each hit, get the product and add it to the result
+        // this should DEFINITELY be refactored to loosen the coupling between them
+        foreach ($data->hits->hit as $hit) {
+            $product_response = $product_client->get("products/{$hit->fields->id}");
+            // var_dump($product_response);
+            $product_data = json_decode($product_response->getBody()->getContents());
+
+            // $products[] = [
+            //     'id' => $hit->fields->id,
+            //     'name' => $hit->fields->name,
+            //     'url' => "products/{$hit->fields->id}"
+            // ];
+            $products[] = $product_data;
+        }
     
         return response()->json([
-            "data" => json_decode($data),
+            "data" => $products,
             "metadata" => [
                 "parameters" => [
                     'q'=>$key,
