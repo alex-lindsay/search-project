@@ -21,8 +21,6 @@ $router->group([], function () use ($router) {
 
   $router->get('products/{id}', ['uses' => 'ProductController@showOneProduct']);
 
-  $router->get('products/search/{key}', ['uses' => 'ProductController@showSearchProducts']);
-
   $router->post('products', ['uses' => 'ProductController@create']);
 
   $router->delete('products/{id}', ['uses' => 'ProductController@delete']);
