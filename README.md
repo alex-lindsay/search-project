@@ -203,3 +203,5 @@ We have the ambitious goal of rebuilding Amazon.com’s shopping experience as a
 - Caching
 - provide JSONAPI endpoints
 - Better Search Engine tooling ()
+- CSRF Protection / X-CSRF-TOKEN
+- Better organize auth management

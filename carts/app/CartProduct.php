@@ -3,22 +3,22 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Product
+ * Class Cart
  *
- * @package Products Service
+ * @package Carts Service
  *
  * @author  Alex Lindsay <work@alex-lindsay.com>
  *
  * @OA\Schema(
- *     description="Product model",
- *     title="Product model",
+ *     description="Cart Product model",
+ *     title="Cart Product model",
  *     required={"name", "short_name", "description", "vendor", "price"},
  *     @OA\Xml(
- *         name="Product"
+ *         name="CartProduct"
  *     )
  * )
  */
-class Product extends Model
+class CartProduct extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -26,7 +26,7 @@ class Product extends Model
      * @var array
      */
     protected $fillable = [
-        'name','short_name','description','vendor','price','sale_price'
+        'cart_id', 'product_id', 'product_name', 'product_short_name', 'product_description', 'product_vendor', 'product_price', 'quantity'
     ];
 
     /**
@@ -39,82 +39,90 @@ class Product extends Model
     /**
      * @OA\Property(
      *     format="int64",
+     *     description="Cart ID.",
+     *     title="Cart ID",
+     * )
+     *
+     * @var integer
+     */
+    private $cart_id;
+    
+    /**
+     * @OA\Property(
+     *     format="int64",
      *     description="Product ID.",
      *     title="Product ID",
      * )
      *
      * @var integer
      */
-    private $id;
+    private $product_id;
     
     /**
      * @OA\Property(
-     *     description="Full descriptive name of the product.",
+     *     description="Product Name when added to cart.",
      *     title="Product Name",
      * )
      *
      * @var string
      */
-    private $name;
+    private $product_name;
     
     /**
      * @OA\Property(
-     *     description="Familiar name of the product.",
-     *     title="Product Nickname",
+     *     description="Product Short Name when added to cart.",
+     *     title="Product Short Name",
      * )
      *
      * @var string
      */
-    private $short_name;
+    private $product_short_name;
     
     /**
      * @OA\Property(
-     *     description="Description of the product.",
+     *     description="Product Description when added to cart.",
      *     title="Product Description",
      * )
      *
      * @var string
      */
-    private $description;
+    private $product_description;
     
     /**
      * @OA\Property(
-     *     format="int64",
-     *     description="ID of the vendor of the product.",
+     *     description="Product Vendor ID when added to cart.",
      *     title="Product Vendor ID",
      * )
      *
      * @var integer
      */
-    private $vendor;
+    private $product_vendor_id;
     
     /**
      * @OA\Property(
-     *     format="float",
-     *     description="Retail price of the product.",
+     *     description="Product Price when added to cart.",
      *     title="Product Price",
      * )
      *
      * @var float
      */
-    private $price;
+    private $product_price;
     
     /**
      * @OA\Property(
-     *     format="float",
-     *     description="Sale price of the product.",
-     *     title="Product Sale Price",
+     *     description="Quantity of product added to cart.",
+     *     title="Quantity",
      * )
      *
-     * @var float
+     * @var integer
      */
-    private $sale_price;
+    private $quantity;
     
     /**
      * @OA\Property(
      *     format="datetime",
-     *     description="Time when the product was last updated.",
-     *     title="Product Updated At",
+     *     description="Time when the cart was last updated.",
+     *     title="Cart Updated At",
      * )
      *
      * @var \DateTime
@@ -124,8 +132,8 @@ class Product extends Model
     /**
      * @OA\Property(
      *     format="datetime",
-     *     description="Time when the product was created.",
-     *     title="Product Created At",
+     *     description="Time when the cart was created.",
+     *     title="Cart Created At",
      * )
      *
      * @var \DateTime

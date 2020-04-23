@@ -23,6 +23,13 @@ export default function Login() {
     try {
       await Auth.signIn(email, password);
       userHasAuthenticated(true);
+      Auth.currentSession().then((res) => {
+        let accessToken = res.getAccessToken();
+        let jwt = accessToken.getJwtToken();
+        //You can print them to see the full objects
+        console.log(`myAccessToken: ${JSON.stringify(accessToken)}`);
+        console.log(`myJwt: ${jwt}`);
+      });
       history.push("/reactui/products");
     } catch (e) {
       alert(e.message);

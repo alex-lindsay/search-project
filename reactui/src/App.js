@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { AppContext } from "./libs/contextLib";
 import { Auth } from "aws-amplify";
 
@@ -14,6 +15,8 @@ function App() {
   const [isAuthenticating, setIsAuthenticating] = useState(true);
   const [products, setProducts] = useState([]);
 
+  const history = useHistory();
+
   useEffect(() => {
     onLoad();
   }, []);
@@ -22,6 +25,14 @@ function App() {
     try {
       await Auth.currentSession();
       userHasAuthenticated(true);
+      Auth.currentSession().then((res) => {
+        let accessToken = res.getAccessToken();
+        let jwt = accessToken.getJwtToken();
+        //You can print them to see the full objects
+        console.log(`myAccessToken: ${JSON.stringify(accessToken)}`);
+        console.log(`myJwt: ${jwt}`);
+        history.push("/reactui/products");
+      });
     } catch (e) {
       if (e !== "No current user") {
         alert(e);

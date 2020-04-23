@@ -16,3 +16,20 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->group([''], function () use ($router) {
+  $router->get('carts',  ['uses' => 'CartController@showAllCarts']);
+
+  $router->get('carts/{id}', ['uses' => 'CartController@showOneCart']);
+
+  $router->post('carts', ['uses' => 'CartController@create']);
+
+  $router->delete('carts/{id}', ['uses' => 'CartController@delete']);
+
+  $router->put('carts/{id}', ['uses' => 'CartController@update']);
+
+// Add a product to a cart
+  $router->post('carts/products', ['uses' => 'CartController@createCartProducts']);
+
+
+});
