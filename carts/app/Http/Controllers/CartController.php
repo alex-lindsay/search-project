@@ -77,7 +77,7 @@ class CartController extends Controller
 
     public function showOneCart($id)
     {
-        return response()->json(Cart::find($id));
+        return response()->json(["cart" => Cart::find($id), "cart_products" => CartProduct::where("cart_id", $id)->get()]);
     }
 
     public function create(Request $request)

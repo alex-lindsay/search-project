@@ -23,11 +23,17 @@ $app = new Laravel\Lumen\Application(
     dirname(__DIR__)
 );
 
+<<<<<<< HEAD
 $app->withFacades();
 
 $app->withEloquent();
 
 $app->configure('swagger-lume');
+=======
+// $app->withFacades();
+
+// $app->withEloquent();
+>>>>>>> 41269897a254d17101a0c0d613e846f4af16bff9
 
 /*
 |--------------------------------------------------------------------------
@@ -100,6 +106,7 @@ $app->middleware([
 // $app->register(App\Providers\AppServiceProvider::class);
 $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
+// $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
 /*
