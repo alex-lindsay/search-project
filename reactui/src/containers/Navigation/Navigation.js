@@ -2,8 +2,9 @@ import React from "react";
 import { Auth } from "aws-amplify";
 import { Link, useHistory } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
-
 import { Navbar, Nav, NavItem } from "react-bootstrap";
+
+import Cart from "./Cart";
 
 import "./Navigation.css";
 
@@ -16,6 +17,8 @@ const Navigation = (props) => {
     history.push("/reactui/login");
   }
 
+  // console.log("Navigation", { props });
+
   return (
     <Navbar fluid collapseOnSelect>
       <Navbar.Header>
@@ -27,7 +30,14 @@ const Navigation = (props) => {
       <Navbar.Collapse>
         <Nav pullRight>
           {props.isAuthenticated ? (
-            <NavItem onClick={handleLogout}>Logout</NavItem>
+            <>
+              <LinkContainer to="/reactui/cart">
+                <NavItem>
+                  <Cart />
+                </NavItem>
+              </LinkContainer>
+              <NavItem onClick={handleLogout}>Logout</NavItem>
+            </>
           ) : (
             <>
               <LinkContainer to="/reactui/products">

@@ -27,10 +27,14 @@ const Products = (props) => {
     }
     fetchProducts();
   }, []);
-
+  console.log("Products", { props });
   const productRows = props.products ? (
     props.products.map((product) => (
-      <ProductRow key={product.id} product={product} />
+      <ProductRow
+        key={product.id}
+        product={product}
+        isAuthenticated={props.isAuthenticated}
+      />
     ))
   ) : (
     <tr>

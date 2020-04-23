@@ -1,5 +1,11 @@
 import { cloneDeep } from "lodash";
-import { SET_PRODUCTS, SET_ALL_PRODUCTS, RESET_PRODUCTS } from "./actions";
+import {
+  SET_USER_IS_AUTHENTICATED,
+  SET_PRODUCTS,
+  SET_ALL_PRODUCTS,
+  RESET_PRODUCTS,
+  UPDATE_CART,
+} from "./actions";
 
 const initialState = {
   products: [],
@@ -9,6 +15,9 @@ const initialState = {
 function appReducer(oldState = initialState, action) {
   let state = cloneDeep(oldState);
   switch (action.type) {
+    case SET_USER_IS_AUTHENTICATED:
+      state.isAuthenticated = action.isAuthenticated;
+      break;
     case SET_PRODUCTS:
       state.products = action.products;
       break;
@@ -17,6 +26,9 @@ function appReducer(oldState = initialState, action) {
       break;
     case RESET_PRODUCTS:
       state.products = oldState.allProducts;
+      break;
+    case UPDATE_CART:
+      state.cart = action.cart;
       break;
     default:
       return state;

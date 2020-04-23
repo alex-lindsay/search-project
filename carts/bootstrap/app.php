@@ -23,17 +23,14 @@ $app = new Laravel\Lumen\Application(
     dirname(__DIR__)
 );
 
-<<<<<<< HEAD
 $app->withFacades();
 
 $app->withEloquent();
 
 $app->configure('swagger-lume');
-=======
 // $app->withFacades();
 
 // $app->withEloquent();
->>>>>>> 41269897a254d17101a0c0d613e846f4af16bff9
 
 /*
 |--------------------------------------------------------------------------
@@ -86,7 +83,7 @@ $app->configure('app');
 
 $app->middleware([
     App\Http\Middleware\CorsMiddleware::class
- ]);
+]);
 
 // $app->routeMiddleware([
 //     'auth' => App\Http\Middleware\Authenticate::class,

@@ -1,9 +1,20 @@
 import axios from "axios";
+import { Auth } from "aws-amplify";
 
 /* Action Types */
+export const SET_USER_IS_AUTHENTICATED = "SET_USER_IS_AUTHENTICATED";
 export const SET_PRODUCTS = "SET_PRODUCTS";
 export const SET_ALL_PRODUCTS = "SET_ALL_PRODUCTS";
 export const RESET_PRODUCTS = "RESET_PRODUCTS";
+export const UPDATE_CART = "UPDATE_CART";
+
+export function setUserIsAuthenticated(isAuthenticated) {
+  console.log("actions.setUserIsAuthenticated");
+  return {
+    type: SET_USER_IS_AUTHENTICATED,
+    authenticated: isAuthenticated,
+  };
+}
 
 export function setProducts(data) {
   console.log("actions.setProducts");
@@ -57,3 +68,45 @@ export function fetchProducts() {
 //       });
 //   };
 // }
+
+export function addProductToCart(data) {
+  return function (dispatch) {
+    console.log("actions.addProductToCart");
+    console.log("fetchProducts");
+    Auth.currentSession()
+      .then((res) => {
+        let accessToken = res.getAccessToken();
+        let jwt = accessToken.getJwtToken();
+
+        return axios
+          .post(
+            `${process.env.REACT_APP_API_URL_CARTS}/carts/products`,
+            {
+              products: data,
+            },
+            {
+              headers: { Authorization: "Bearer " + jwt },
+            }
+          )
+          .then((response) => {
+            console.log("after axios", response.data);
+            dispatch(updateCart());
+          })
+          .catch((error) => {
+            console.warn("TODO REPLACE THIS WITH AN ERROR DISPATCH");
+            console.error("Error getting products:", error);
+          });
+      })
+      .catch((error) => {
+        console.warn("TODO REPLACE THIS WITH AN ERROR DISPATCH");
+        console.error("Error getting products:", error);
+      });
+  };
+}
+
+export function updateCart(data) {
+  return {
+    type: UPDATE_CART,
+    data: data,
+  };
+}

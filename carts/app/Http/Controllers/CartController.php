@@ -203,12 +203,12 @@ class CartController extends Controller
                             "product_price" => $product->sale_price,
                             "quantity" => $product_request["quantity"],
                         ]);
-                        $cart_products[] = $cart_product;
                     } else {
                         $warnings[] = "$product->name could not be added to the cart as it is $product->status";
                     }
                 }
             }
+            $cart_products = CartProduct::where("cart_id", $cart["id"])->get();
         } catch (\Exception $e) {
             $errors[] = "Something went wrong retrieving a cart";
             $errors[] = $e->getMessage();
