@@ -185,7 +185,7 @@ class CartController extends Controller
                 'base_uri' => env("PRODUCT_SERVICE"),
                 ]);
             foreach($request->json()->get("products") as $product_request) {
-                $res = $product_client->get("/products/" . $product_request["product_id"],[]);
+                $res = $product_client->get("products/" . $product_request["product_id"],[]);
                 if ($res->getStatusCode() == 200) {
                     // TODO add logic to merge products if the same product is added more than once
                     // TODO get vendor name instead of vendor ID.
