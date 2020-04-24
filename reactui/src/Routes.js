@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import Home from "./containers/Home/Home";
 import Login from "./containers/Login/Login";
 import Products from "./containers/Products/Products";
+import Cart from "./containers/Cart/Cart";
 import NotFound from "./containers/NotFound/NotFound";
 
 export default function Routes() {
@@ -16,6 +17,9 @@ export default function Routes() {
       </Route>
       <Route exact path="/reactui/products">
         <Products />
+      </Route>
+      <Route exact path="/reactui/cart">
+        <Cart />
       </Route>
       <Route>
         <NotFound />

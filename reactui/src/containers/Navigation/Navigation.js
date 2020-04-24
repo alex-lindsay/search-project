@@ -33,8 +33,11 @@ const Navigation = (props) => {
             <>
               <LinkContainer to="/reactui/cart">
                 <NavItem>
-                  <Cart />
+                  <Cart cartProducts={props.cartProducts} />
                 </NavItem>
+              </LinkContainer>
+              <LinkContainer to="/reactui/products">
+                <NavItem>Products</NavItem>
               </LinkContainer>
               <NavItem onClick={handleLogout}>Logout</NavItem>
             </>

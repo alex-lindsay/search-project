@@ -30,6 +30,7 @@ export default function Login() {
         console.log(`myAccessToken: ${JSON.stringify(accessToken)}`);
         console.log(`myJwt: ${jwt}`);
       });
+      // TODO get current cart for the user upon login
       history.push("/reactui/products");
     } catch (e) {
       alert(e.message);

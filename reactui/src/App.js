@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
 import { AppContext } from "./libs/contextLib";
 import { Auth } from "aws-amplify";
+import { useDispatch } from "react-redux";
 
 import Routes from "./Routes";
+
+import { fetchCart } from "./store/actions";
 
 import Navigation from "./containers/Navigation/Navigation";
 
@@ -13,9 +15,14 @@ function App() {
   const [isAuthenticated, userHasAuthenticated] = useState(false);
   const [isAuthenticating, setIsAuthenticating] = useState(true);
   const [products, setProducts] = useState([]);
+  const [cartProducts] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    onLoad();
+    async function asyncOnLoad() {
+      await onLoad();
+    }
+    asyncOnLoad();
   }, []);
 
   async function onLoad() {
@@ -27,6 +34,8 @@ function App() {
       //You can print them to see the full objects
       console.log(`myAccessToken: ${JSON.stringify(accessToken)}`);
       console.log(`myJwt: ${jwt}`);
+      dispatch(fetchCart());
+      // TODO get current cart for the user upon login
     } catch (e) {
       if (e !== "No current user") {
         alert(e);
@@ -41,11 +50,17 @@ function App() {
   ) : (
     <div className="App container">
       <AppContext.Provider
-        value={{ isAuthenticated, userHasAuthenticated, products, setProducts }}
+        value={{
+          isAuthenticated,
+          userHasAuthenticated,
+          products,
+          setProducts,
+        }}
       >
         <Navigation
           isAuthenticated={isAuthenticated}
           userHasAuthenticated={userHasAuthenticated}
+          cartProducts={cartProducts}
         />
         <Routes />
       </AppContext.Provider>
@@ -53,12 +68,4 @@ function App() {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {};
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

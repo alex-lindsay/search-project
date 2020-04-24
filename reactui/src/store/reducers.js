@@ -10,6 +10,9 @@ import {
 const initialState = {
   products: [],
   allProducts: [],
+  cart: [],
+  cartProducts: [],
+  messages: [],
 };
 
 function appReducer(oldState = initialState, action) {
@@ -28,7 +31,9 @@ function appReducer(oldState = initialState, action) {
       state.products = oldState.allProducts;
       break;
     case UPDATE_CART:
-      state.cart = action.cart;
+      state.cart = action.data.cart;
+      state.cartProducts = action.data.cart_products;
+      state.messages = state.messages.concat(action.warnings);
       break;
     default:
       return state;

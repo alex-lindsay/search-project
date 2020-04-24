@@ -63,7 +63,7 @@ class CartController extends Controller
         // } catch (\Exception $e) {
         //     die("Could not connect to the database.  Please check your configuration. error:" . $e );
         // }
-        $data = Cart::all();
+        $data = Cart::where('username', $request->json()->get("username"))->get();
         return response()->json([
             "data" => $data,
             "metadata" => [

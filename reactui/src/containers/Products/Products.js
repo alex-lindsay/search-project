@@ -27,6 +27,7 @@ const Products = (props) => {
     }
     fetchProducts();
   }, []);
+
   console.log("Products", { props });
   const productRows = props.products ? (
     props.products.map((product) => (

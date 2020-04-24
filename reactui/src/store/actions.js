@@ -72,7 +72,6 @@ export function fetchProducts() {
 export function addProductToCart(data) {
   return function (dispatch) {
     console.log("actions.addProductToCart");
-    console.log("fetchProducts");
     Auth.currentSession()
       .then((res) => {
         let accessToken = res.getAccessToken();
@@ -90,7 +89,7 @@ export function addProductToCart(data) {
           )
           .then((response) => {
             console.log("after axios", response.data);
-            dispatch(updateCart());
+            dispatch(updateCart(response.data));
           })
           .catch((error) => {
             console.warn("TODO REPLACE THIS WITH AN ERROR DISPATCH");
@@ -106,7 +105,43 @@ export function addProductToCart(data) {
 
 export function updateCart(data) {
   return {
+    ...data,
     type: UPDATE_CART,
-    data: data,
   };
 }
+
+export function fetchCart() {
+  return function (dispatch) {
+    console.log("actions.fetchCart");
+    Auth.currentSession()
+      .then((res) => {
+        let accessToken = res.getAccessToken();
+        let jwt = accessToken.getJwtToken();
+
+        return axios
+          .post(
+            `${process.env.REACT_APP_API_URL_CARTS}/carts/products`,
+            {
+              products: [],
+            },
+            {
+              headers: { Authorization: "Bearer " + jwt },
+            }
+          )
+          .then((response) => {
+            console.log("after axios", response.data);
+            dispatch(updateCart(response.data));
+          })
+          .catch((error) => {
+            console.warn("TODO REPLACE THIS WITH AN ERROR DISPATCH");
+            console.error("Error getting cart:", error);
+          });
+      })
+      .catch((error) => {
+        console.warn("TODO REPLACE THIS WITH AN ERROR DISPATCH");
+        console.error("Error getting cart:", error);
+      });
+  };
+}
+
+export function removeProductFromCart() {}
