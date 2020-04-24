@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { useAppContext } from "../../libs/contextLib";
+// import { useAppContext } from "../../libs/contextLib";
 
 import "./Cart.css";
 
@@ -11,7 +11,7 @@ import { removeProductFromCart } from "../../store/actions";
 
 const CartProductRow = (props) => {
   const dispatch = useDispatch();
-  console.log("CartProductRow props", props);
+  //   console.log("CartProductRow props", props);
 
   const removeProductFromCartButton = (
     <FontAwesomeIcon
