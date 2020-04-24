@@ -144,4 +144,34 @@ export function fetchCart() {
   };
 }
 
-export function removeProductFromCart() {}
+export function removeProductFromCart(data) {
+  console.log(data);
+  return function (dispatch) {
+    console.log("actions.removeProductFromCart");
+    Auth.currentSession()
+      .then((res) => {
+        let accessToken = res.getAccessToken();
+        let jwt = accessToken.getJwtToken();
+
+        return axios
+          .delete(
+            `${process.env.REACT_APP_API_URL_CARTS}/carts/${data.cart_id}/products/${data.product_id}`,
+            {
+              headers: { Authorization: "Bearer " + jwt },
+            }
+          )
+          .then((response) => {
+            console.log("after axios delete product", response.data);
+            dispatch(updateCart(response.data));
+          })
+          .catch((error) => {
+            console.warn("TODO REPLACE THIS WITH AN ERROR DISPATCH");
+            console.error("Error getting products:", error);
+          });
+      })
+      .catch((error) => {
+        console.warn("TODO REPLACE THIS WITH AN ERROR DISPATCH");
+        console.error("Error getting products:", error);
+      });
+  };
+}

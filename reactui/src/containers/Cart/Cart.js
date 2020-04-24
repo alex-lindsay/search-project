@@ -7,7 +7,7 @@ import "./Cart.css";
 
 const Cart = (props) => {
   const cartProducts = useSelector((state) => state.cartProducts);
-  console.log("Cart cartProducts", { cartProducts });
+  //   console.log("Cart cartProducts", { cartProducts });
   const cartRows = cartProducts ? (
     cartProducts.map((product, index) => (
       <CartProductRow key={index} product={product} />

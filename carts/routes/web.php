@@ -31,5 +31,7 @@ $router->group([''], function () use ($router) {
 // Add a product to a cart
   $router->post('carts/products', ['uses' => 'CartController@createCartProducts']);
 
+  $router->delete('carts/{cart_id}/products/{product_id}', ['uses' => 'CartController@deleteCartProducts']);
+  // $router->delete('carts/products/{id}', ['uses' => 'CartController@deleteCartProducts']);
 
 });

@@ -204,7 +204,7 @@ class CartController extends Controller
                             "quantity" => $product_request["quantity"],
                         ]);
                     } else {
-                        $warnings[] = "$product->name could not be added to the cart as it is $product->status";
+                        $warnings[] = "\"$product->name ($product->id)\" could not be added to the cart as it is $product->status";
                     }
                 }
             }
@@ -223,6 +223,61 @@ class CartController extends Controller
             "warnings" => $warnings
         ], 201);
         // return response()->json($cart, 201);
+    }
+
+    public function deleteCartProducts(Request $request, $cart_id, $product_id)
+    {
+        $errors = [];
+        // $token = substr($request->header("Authorization"), 7);
+        $token = $request->bearerToken();
+        $tks = \explode('.', $token);
+
+        try {
+            $keys = \Firebase\JWT\JWK::parseKeySet(["keys" => self::JWT_KEYS]);
+            $decoded = \Firebase\JWT\JWT::decode($token, $keys, array('RS256','RS512'));
+            if ($decoded->iss != env("JWT_ISSUER")) {throw new \Exception("Invalid Token");}
+            if ($decoded->client_id != env("JWT_CLIENT_ID")) {throw new \Exception("Invalid Token");}
+            if ($decoded->token_use != env("JWT_USE")) {throw new \Exception("Invalid Token");}
+            // if ($decoded->sub != $request->json()->get("username")) {throw new \Exception("Invalid Token");}
+            // die(var_dump($decoded));
+        } catch (\Firebase\JWT\ExpiredException $exp) {
+            $errors[] = "Access Denied";
+            $errors[] = $exp->getMessage();
+            http_response_code(401);
+            return response()->json(["errors"=>$errors]);
+        } catch (\Exception $e) {
+            $errors[] = "Access Denied";
+            $errors[] = $e->getMessage();
+            http_response_code(401);
+            return response()->json(["errors"=>$errors]);
+        } 
+        try {
+            //TODO verify that the cart is owned by the user posting the delete
+            CartProduct::where([
+                ['cart_id', $cart_id],
+                ['product_id', $product_id]]
+            )->delete();
+
+            // return response()->json([
+            //     "foo" => "bar",
+            // "cart" => Cart::find($cart_id), 
+            // "cart_products" => CartProduct::where("cart_id", $cart_id)->get()
+            // ]);
+
+        } catch (\Exception $e) {
+            $errors[] = "Something went wrong while deleting an item from the cart";
+            $errors[] = $e->getMessage();
+            http_response_code(401);
+            return response()->json(["errors"=>$errors]);
+        }
+
+        return response()->json([
+            "data" => [
+                "cart" => Cart::find($cart_id), 
+                "cart_products" => CartProduct::where("cart_id", $cart_id)->get()
+            ]
+        ]);
+        // return redirect()->action('CartController@showOneCart', ['id' => $cart_id]);
     }
 
 }

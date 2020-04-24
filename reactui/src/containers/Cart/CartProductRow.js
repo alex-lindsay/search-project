@@ -11,13 +11,19 @@ import { removeProductFromCart } from "../../store/actions";
 
 const CartProductRow = (props) => {
   const dispatch = useDispatch();
+
   //   console.log("CartProductRow props", props);
 
   const removeProductFromCartButton = (
     <FontAwesomeIcon
       icon={faTrashAlt}
       onClick={() =>
-        dispatch(removeProductFromCart([{ product_id: props.product.id }]))
+        dispatch(
+          removeProductFromCart({
+            cart_id: props.product.cart_id,
+            product_id: props.product.product_id,
+          })
+        )
       }
     />
   );

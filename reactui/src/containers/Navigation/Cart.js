@@ -8,7 +8,7 @@ import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
 const Cart = (props) => {
   const cartProducts = useSelector((state) => state.cartProducts);
-  console.log("***Cart", cartProducts);
+  // console.log("***Cart", cartProducts);
   const cartCount =
     cartProducts && cartProducts.length > 0 ? cartProducts.length : null;
   return (
