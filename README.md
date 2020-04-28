@@ -1,6 +1,6 @@
 # search-project
 
-Develop product search microservices
+Develop product search services - Based on a set of request requirements from the Disqo Engineering Interview Process.
 
 ## Introduction
 
